@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, onViewChange }) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
             <Sprout className="h-8 w-8 text-green-600" />
-            <span className="text-2xl font-bold text-gray-800">Fresh From Fram</span>
+            <span className="text-2xl font-bold text-gray-800">Fresh From Farm</span>
           </div>
           
           <nav className="flex items-center space-x-6">
