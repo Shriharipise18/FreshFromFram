@@ -34,7 +34,7 @@ export const sampleProducts: Product[] = [
       phone: '+91-9123456789',
       email: 'priya.mangofarm@gmail.com'
     },
-    image: 'https://images.pexels.com/photos/918327/pexels-photo-918327.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.unsplash.com/photo-1605027990121-cbae9e0642df?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1hbmdvfGVufDB8fDB8fHww',
     description: 'Sweet and juicy Alphonso mangoes directly from our orchard.',
     inStock: true,
     harvestDate: '2024-05-20'
@@ -91,7 +91,7 @@ export const sampleProducts: Product[] = [
       phone: '+91-9789012345',
       email: 'anil.rice@gmail.com'
     },
-    image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://plus.unsplash.com/premium_photo-1705404738477-24fc4e77f836?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGJhc21hdGklMjByaWNlfGVufDB8fDB8fHww',
     description: 'Premium quality Basmati rice with long grains and aromatic fragrance.',
     inStock: true,
     harvestDate: '2024-04-05'
@@ -452,7 +452,7 @@ export const sampleProducts: Product[] = [
       phone: '+91-9678912345',
       email: 'ashok.pomegranate@gmail.com'
     },
-    image: 'https://images.pexels.com/photos/65256/pomegranate-open-cores-fruit-65256.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.unsplash.com/photo-1700663654497-0eb7cdc152b6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cG9tb2dyYW5hdGV8ZW58MHx8MHx8fDA%3D',
     description: 'Fresh pomegranates rich in antioxidants and natural sweetness.',
     inStock: true,
     harvestDate: '2024-02-15'
