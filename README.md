@@ -53,7 +53,7 @@ graph TD
     end
 
     subgraph Farmer Flow
-        Farmer[👨‍🌾 Farmer] -->|Login| FarmerDashboard
+        Farmer[👨‍🌾 Farmer] --> FarmerDashboard
         FarmerDashboard --> AddProductModal
     end
 
