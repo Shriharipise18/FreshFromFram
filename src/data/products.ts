@@ -53,7 +53,7 @@ export const sampleProducts: Product[] = [
       phone: '+91-9345678901',
       email: 'suresh.grains@gmail.com'
     },
-    image: 'https://www.pexels.com/photo/selective-focus-photography-of-wheat-field-265216/',
+    image: 'https://www.pexels.com/photo/grass-field-during-golden-hour-533982/',
     description: 'High-quality wheat grains perfect for making flour and bread.',
     inStock: true,
     harvestDate: '2024-03-10'
