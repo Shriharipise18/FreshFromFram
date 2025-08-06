@@ -2,7 +2,6 @@
 
 A fully responsive and user-friendly platform that directly connects farmers with customers, allowing them to buy and sell fresh, seasonal agricultural products with ease.
 
-🟢 **Live Demo**: [https://newrepo-three-ruby.vercel.app](newrepo-three-ruby.vercel.app)
 
 ---
 
