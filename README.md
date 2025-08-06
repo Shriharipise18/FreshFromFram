@@ -22,12 +22,12 @@ A fully responsive and user-friendly platform that directly connects farmers wit
 
 ## 🧰 Tech Stack
 
-| Layer         | Technology            |
-|---------------|------------------------|
+| Layer         | Technology              |
+|---------------|------------------------ |
 | Frontend      | Vite + TypeScript + JSX |
-| Styling       | CSS (No Tailwind)       |
-| Deployment    | Netlify                |
-| Images        | Pexels (Royalty-Free)  |
+| Styling       |  Tailwind CSS           |
+| Deployment    | Versal                  |
+| Images        | Pexels                  |
 
 ---
 
