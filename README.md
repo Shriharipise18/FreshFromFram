@@ -40,8 +40,8 @@ graph TD
 
     subgraph Deployment Flow
         Dev[👨‍💻 Developer] -->|Push Code| GitHub
-        GitHub -->|Build Trigger| Netlify
-        Netlify -->|CDN Deployed| LiveSite[🌐 Live Site]
+        GitHub -->|Build Trigger| Versal
+        Versal -->|CDN Deployed| LiveSite[🌐 Live Site]
     end
 
     subgraph User Interaction Flow
