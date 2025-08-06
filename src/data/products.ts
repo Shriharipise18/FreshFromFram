@@ -414,7 +414,7 @@ export const sampleProducts: Product[] = [
       phone: '+91-9234567123',
       email: 'raman.papaya@gmail.com'
     },
-    image: 'https://images.pexels.com/photos/1263348/pexels-photo-1263348.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://media.istockphoto.com/id/1310394235/photo/ripe-papaya-fruit-in-a-basket-holding-by-woman-hand.jpg?s=612x612&w=0&k=20&c=lUopZ1AD5BqJ4O1OT2UByQCEJ0trsBTaShsb16Aa2wc=',
     description: 'Sweet and nutritious papaya rich in vitamins and enzymes.',
     inStock: true,
     harvestDate: '2024-05-25'
