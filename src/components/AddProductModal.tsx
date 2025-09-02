@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
-import { Product } from '../types';
+import { Product, phoneSchema } from '../types';
 
 interface AddProductModalProps {
   onClose: () => void;
@@ -29,6 +29,7 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
     inStock: true,
     harvestDate: ''
   });
+  const [phoneError, setPhoneError] = useState('');
 
   const categories = ['Vegetables', 'Fruits', 'Grains', 'Dairy', 'Others'];
   const seasons = ['Spring', 'Summer', 'Monsoon', 'Winter', 'All Season'];
@@ -36,6 +37,14 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate phone number
+    const phoneValidation = phoneSchema.safeParse(formData.farmer.phone);
+    if (!phoneValidation.success) {
+      setPhoneError('Phone number must be exactly 10 digits');
+      return;
+    }
+    
     onAddProduct({
       ...formData,
       price: parseFloat(formData.price),
@@ -46,6 +55,11 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
+    
+    // Clear phone error when user starts typing
+    if (name === 'farmer.phone') {
+      setPhoneError('');
+    }
     
     if (name.startsWith('farmer.')) {
       const farmerField = name.split('.')[1];
@@ -258,13 +272,20 @@ const AddProductModal: React.FC<AddProductModalProps> = ({
                   Phone Number *
                 </label>
                 <input
-                  type="tel"
+                  type="text"
                   name="farmer.phone"
                   value={formData.farmer.phone}
                   onChange={handleChange}
+                  placeholder="Enter 10-digit phone number"
+                  maxLength={10}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className={`w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                    phoneError ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
+                {phoneError && (
+                  <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+                )}
               </div>
               
               <div>

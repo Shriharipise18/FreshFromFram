@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, ShoppingCart, AlertCircle } from 'lucide-react';
-import { Product, OrderDetails } from '../types';
+import { Product, OrderDetails, phoneSchema } from '../types';
 
 interface OrderModalProps {
   product: Product;
@@ -20,11 +20,20 @@ const OrderModal: React.FC<OrderModalProps> = ({
     customerAddress: '',
     quantity: product.minOrder
   });
+  const [phoneError, setPhoneError] = useState('');
 
   const totalAmount = formData.quantity * product.price;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate phone number
+    const phoneValidation = phoneSchema.safeParse(formData.customerPhone);
+    if (!phoneValidation.success) {
+      setPhoneError('Phone number must be exactly 10 digits');
+      return;
+    }
+    
     onSubmitOrder({
       ...formData,
       productId: product.id,
@@ -34,6 +43,12 @@ const OrderModal: React.FC<OrderModalProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    
+    // Clear phone error when user starts typing
+    if (name === 'customerPhone') {
+      setPhoneError('');
+    }
+    
     setFormData({
       ...formData,
       [name]: name === 'quantity' ? Math.max(product.minOrder, parseInt(value) || product.minOrder) : value
@@ -109,13 +124,20 @@ const OrderModal: React.FC<OrderModalProps> = ({
                 Your Phone *
               </label>
               <input
-                type="tel"
+                type="text"
                 name="customerPhone"
                 value={formData.customerPhone}
                 onChange={handleChange}
+                placeholder="Enter 10-digit phone number"
+                maxLength={10}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className={`w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                  phoneError ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
+              {phoneError && (
+                <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+              )}
             </div>
             
             <div>

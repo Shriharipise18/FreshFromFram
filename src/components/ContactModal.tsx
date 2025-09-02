@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Phone, Mail, MapPin } from 'lucide-react';
-import { Product, ContactInfo } from '../types';
+import { Product, ContactInfo, phoneSchema } from '../types';
 
 interface ContactModalProps {
   product: Product;
@@ -19,9 +19,18 @@ const ContactModal: React.FC<ContactModalProps> = ({
     customerPhone: '',
     message: ''
   });
+  const [phoneError, setPhoneError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate phone number
+    const phoneValidation = phoneSchema.safeParse(formData.customerPhone);
+    if (!phoneValidation.success) {
+      setPhoneError('Phone number must be exactly 10 digits');
+      return;
+    }
+    
     onSendMessage({
       ...formData,
       productId: product.id
@@ -29,9 +38,16 @@ const ContactModal: React.FC<ContactModalProps> = ({
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    
+    // Clear phone error when user starts typing
+    if (name === 'customerPhone') {
+      setPhoneError('');
+    }
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
   };
 
@@ -115,13 +131,20 @@ const ContactModal: React.FC<ContactModalProps> = ({
                 Your Phone *
               </label>
               <input
-                type="tel"
+                type="text"
                 name="customerPhone"
                 value={formData.customerPhone}
                 onChange={handleChange}
+                placeholder="Enter 10-digit phone number"
+                maxLength={10}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className={`w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                  phoneError ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
+              {phoneError && (
+                <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+              )}
             </div>
             
             <div>
