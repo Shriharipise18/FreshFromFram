@@ -21,7 +21,7 @@ export interface Product {
 export interface ContactInfo {
   customerName: string;
   customerEmail: string;
-  customerPhone: string;
+  customerPhone: number;
   message: string;
   productId: string;
 }
@@ -29,7 +29,7 @@ export interface ContactInfo {
 export interface OrderDetails {
   customerName: string;
   customerEmail: string;
-  customerPhone: string;
+  customerPhone: number;
   customerAddress: string;
   quantity: number;
   productId: string;
